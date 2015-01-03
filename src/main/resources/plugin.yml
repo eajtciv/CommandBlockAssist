@@ -1,0 +1,35 @@
+name: CommandBlockAssist
+main: com.github.eajtciv.commandblockassist.CommandBlockAssist
+version: 1.0
+
+commands:
+  CommandBlockAssist:
+    aliases: cba
+    usage: "/<command>"
+    permission: COMMANDBLOCKASSIST.COMMAND
+    permission-message: 権限 "<permission>" が無ないよ！
+
+permissions:
+  COMMANDBLOCKASSIST.GIVE:
+    description: Giveを入力するツールの権限です。
+    default: op
+
+  COMMANDBLOCKASSIST.TP:
+    description: TPを入力するツールの権限です。
+    default: op
+
+  COMMANDBLOCKASSIST.SETBLOCK:
+    description: SetBlockを入力するツールの権限です。
+    default: op
+
+  COMMANDBLOCKASSIST.COPY:
+    description: コマンドブロックコピーをするツールの権限です。
+    default: op
+
+  COMMANDBLOCKASSIST.REPLACE:
+    description: 置き換えをするツールの権限です。
+    default: op
+
+  COMMANDBLOCKASSIST.COMMAND:
+    description: CommandBlockAssistのコマンドの実行権限です。
+    default: op

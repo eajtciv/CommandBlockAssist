@@ -1,0 +1,38 @@
+# CommandBlockAssist v1.0
+# @author eajtciv
+
+# 設置モード(trueにするとシフトで置き換え、シフト無で設置になります。(設置時の動作を反転します。))
+# コマンドでPlaceModeを設定した場合未設定状態にするまでそちらが優先
+PlaceMode: false
+
+# ツール有効化の可否(Bukkit側のリロードするまで適用されません。)
+Enable:
+  SetBlock: true
+  Replace: true
+  Copy: true
+  Give: true
+  Tp: true
+
+# ツールの設定
+SetBlock:
+  Tool: DIAMOND_HOE
+  Command: "setblock"
+  HandlingType: "replace"
+  DataTag: true
+
+Copy:
+  Tool: IRON_HOE
+
+Give:
+  Tool: STONE_HOE
+  Commmand: "give"
+  Target: "@p"
+  DataTag: true
+
+Tp:
+  Tool: GOLD_HOE
+  Command: "tp"
+  Target: "@p"
+
+Replace:
+  Tool: WOOD_HOE
