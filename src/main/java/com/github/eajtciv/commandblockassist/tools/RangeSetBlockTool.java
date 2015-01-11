@@ -21,11 +21,11 @@ import org.bukkit.inventory.ItemStack;
 import com.github.eajtciv.commandblockassist.CommandBlockAssist;
 import com.github.eajtciv.commandblockassist.CommandBlockAssistConfig;
 import com.github.eajtciv.commandblockassist.tools.SetBlockTool.CoordinateMode;
-import com.github.eajtciv.commandblockassist.util.BlockArea;
-import com.github.eajtciv.commandblockassist.util.CommandBlockUtl;
-import com.github.eajtciv.commandblockassist.util.Filterdata;
-import com.github.eajtciv.commandblockassist.util.ToolInventoryHolder;
-import com.github.eajtciv.commandblockassist.util.Utility;
+import com.github.eajtciv.commandblockassist.utility.BlockArea;
+import com.github.eajtciv.commandblockassist.utility.CommandBlockUtl;
+import com.github.eajtciv.commandblockassist.utility.Filterdata;
+import com.github.eajtciv.commandblockassist.utility.ToolInventoryHolder;
+import com.github.eajtciv.commandblockassist.utility.Utility;
 /**
  * @author eajtciv
  */
@@ -244,7 +244,7 @@ public class RangeSetBlockTool implements Listener {
 
 		player.sendMessage(plugin.getPluginName()
 				+ String.format(
-						"§6In:§e[%s] §6Out§e[%s] §6フィルタ除外§e[%s] §6不足:§e[%s§e]",
+						"§6In:§e%s §6Out:§e%s §6フィルタ除外:§e%s §6不足:§e%s§e",
 						sizeIn, sizeOut, (sizeIn - valid), color + lack));
 	}
 

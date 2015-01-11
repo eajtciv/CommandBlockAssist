@@ -17,7 +17,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.github.eajtciv.commandblockassist.CommandBlockAssist;
 import com.github.eajtciv.commandblockassist.CommandBlockAssistConfig;
-import com.github.eajtciv.commandblockassist.util.Utility;
+import com.github.eajtciv.commandblockassist.utility.Utility;
 /**
  * @author eajtciv
  */
@@ -162,6 +162,19 @@ public class TpTool implements Listener {
 			if(getFew(new Double(z)) == 0.0) z = String.valueOf(block.getZ());
 		}
 		command.append(String.format("%s %s %s", x, y, z));
+
+		if(config.isPitchYaw()){
+			Integer pitch = (int) location.getPitch();
+			Integer yaw = (int) location.getYaw();
+			if(mode == Modes.Default){
+				int yawSplit = 4;
+				int pitchSplit = 4;
+				yaw = (Math.round(((yaw+360+45)/(360/yawSplit))) * (360/yawSplit))-360;
+				pitch = (Math.round(((pitch+180+22)/(180/pitchSplit))) * (180/pitchSplit))-180;
+			}
+			command.append(String.format(" %s %s", yaw, pitch));
+		}
+
 		return command.toString();
 	}
 

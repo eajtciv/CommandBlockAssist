@@ -19,8 +19,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.github.eajtciv.commandblockassist.CommandBlockAssist;
 import com.github.eajtciv.commandblockassist.CommandBlockAssistConfig;
-import com.github.eajtciv.commandblockassist.util.CommandBlockUtl;
-import com.github.eajtciv.commandblockassist.util.Utility;
+import com.github.eajtciv.commandblockassist.utility.CommandBlockUtl;
+import com.github.eajtciv.commandblockassist.utility.Utility;
 /**
  * @author eajtciv
  */

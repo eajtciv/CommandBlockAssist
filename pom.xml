@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.eajtciv</groupId>
   <artifactId>CommandBlockAssist</artifactId>
-  <version>v1.0</version>
+  <version>v1.1</version>
 
   <build>
     <plugins>

@@ -1,6 +1,7 @@
 package com.github.eajtciv.commandblockassist.tools;
 
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 import org.bukkit.Bukkit;
@@ -21,9 +22,9 @@ import org.bukkit.inventory.ItemStack;
 
 import com.github.eajtciv.commandblockassist.CommandBlockAssist;
 import com.github.eajtciv.commandblockassist.CommandBlockAssistConfig;
-import com.github.eajtciv.commandblockassist.util.CreatingDataTag;
-import com.github.eajtciv.commandblockassist.util.ToolInventoryHolder;
-import com.github.eajtciv.commandblockassist.util.Utility;
+import com.github.eajtciv.commandblockassist.utility.DataTagUtl;
+import com.github.eajtciv.commandblockassist.utility.ToolInventoryHolder;
+import com.github.eajtciv.commandblockassist.utility.Utility;
 /**
  * @author eajtciv
  */
@@ -160,31 +161,39 @@ public class GiveTool implements Listener {
 
 	private String getCommand(ItemStack item){
 		StringBuilder command = new StringBuilder();
-		command.append(config.getGiveCommand());
-		command.append(" ");
-		command.append(config.getGiveTarget());
-		command.append(" ");
+		command.append(config.getGiveCommand()).append(" ");
+		command.append(config.getGiveTarget()).append(" ");
 
-		command.append(item.getTypeId());
 
-		command.append(" ");
-		command.append(item.getAmount());
+		if(config.isNameId()){
+			String id = DataTagUtl.getItemNameId(item.getTypeId());
+			if(id == null){
+				id = "minecraft:" + item.getType().name().toLowerCase(Locale.ENGLISH);
+			}
+			command.append(id);
+		}else{
+			command.append(item.getTypeId());
+		}
+
+		command.append(" ").append(item.getAmount());
 
 		if(config.getGiveDataTag()){
-			String dataTag = CreatingDataTag.getItemDataTag(item);
-			if(dataTag != null){
-				command.append(" ");
-				command.append(item.getDurability());
+			String dataTag = null;
+			if(config.isExactDataTag()){
+				dataTag = DataTagUtl.getExactItemDataTag(item);
+			}else{
+				dataTag = DataTagUtl.getItemDataTag(item);
+			}
 
-				command.append(" ");
-				command.append(dataTag);
+			if(dataTag != null){
+				command.append(" ").append(item.getDurability());
+
+				command.append(" ").append(dataTag);
 			}else if(item.getDurability() != 0){
-				command.append(" ");
-				command.append(item.getDurability());
+				command.append(" ").append(item.getDurability());
 			}
 		}else if(item.getDurability() != 0){
-			command.append(" ");
-			command.append(item.getDurability());
+			command.append(" ").append(item.getDurability());
 		}
 		return command.toString();
 	}

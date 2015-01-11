@@ -1,4 +1,4 @@
-package com.github.eajtciv.commandblockassist.util;
+package com.github.eajtciv.commandblockassist.utility;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;

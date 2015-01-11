@@ -13,9 +13,9 @@ import org.bukkit.inventory.ItemStack;
 
 import com.github.eajtciv.commandblockassist.CommandBlockAssist;
 import com.github.eajtciv.commandblockassist.CommandBlockAssistConfig;
-import com.github.eajtciv.commandblockassist.util.CommandBlockUtl;
-import com.github.eajtciv.commandblockassist.util.CoolTimeManager;
-import com.github.eajtciv.commandblockassist.util.Utility;
+import com.github.eajtciv.commandblockassist.utility.CommandBlockUtl;
+import com.github.eajtciv.commandblockassist.utility.CoolTimeManager;
+import com.github.eajtciv.commandblockassist.utility.Utility;
 /**
  * @author eajtciv
  */

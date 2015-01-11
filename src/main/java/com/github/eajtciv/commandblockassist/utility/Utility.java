@@ -1,4 +1,4 @@
-package com.github.eajtciv.commandblockassist.util;
+package com.github.eajtciv.commandblockassist.utility;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -125,12 +125,16 @@ public class Utility {
 	 * @param connect リストを接続する文字
 	 * @return String
 	 */
-	public static String listJoin(List<?> list, String connect){
-		StringBuffer out = new StringBuffer();
-		for(Object line : list){
-			if(!(line != null && !line.equals(""))) continue;
-			if(out.length() != 0 && connect != null) out.append(connect);
-			out.append(line.toString());
+	public static String listJoin(List<?> list, String connect) {
+		StringBuilder out = new StringBuilder();
+		for (int i = 0; i < list.size(); i++) {
+			Object line = list.get(i);
+			if (line != null && !line.equals("")) {
+				if ((i == 0 || connect == null) == false) {
+					out.append(connect);
+				}
+				out.append(line.toString());
+			}
 		}
 		return out.toString();
 	}

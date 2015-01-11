@@ -1,9 +1,17 @@
-# CommandBlockAssist v1.0
+# CommandBlockAssist v1.1
 # @author eajtciv
 
 # 設置モード(trueにするとシフトで置き換え、シフト無で設置になります。(設置時の動作を反転します。))
-# コマンドでPlaceModeを設定した場合未設定状態にするまでそちらが優先
+# コマンドでPlaceModeを設定した場合未設定状態にするまでそちらが優先です。
 PlaceMode: false
+
+# IDを1.8などで使用する[minecraft:xxx]といったものにします。
+# (Spigot 1.7.x - 1.8・Bukkit 1.7.x)のみ対応しています。
+NameId: true
+
+# falseにするとデータタグを本プラグインに生成させ、
+# trueでNBTTagCompoundに生成させます。
+ExactDataTag: false
 
 # ツール有効化の可否(Bukkit側のリロードするまで適用されません。)
 Enable:
@@ -13,7 +21,7 @@ Enable:
   Give: true
   Tp: true
 
-# ツールの設定
+# ツール設定
 SetBlock:
   Tool: DIAMOND_HOE
   Command: "setblock"
@@ -33,6 +41,7 @@ Tp:
   Tool: GOLD_HOE
   Command: "tp"
   Target: "@p"
+  PitchYaw: false
 
 Replace:
   Tool: WOOD_HOE

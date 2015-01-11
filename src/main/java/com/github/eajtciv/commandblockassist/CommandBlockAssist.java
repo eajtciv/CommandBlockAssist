@@ -13,8 +13,8 @@ import com.github.eajtciv.commandblockassist.tools.RangeSetBlockTool;
 import com.github.eajtciv.commandblockassist.tools.ReplaceTool;
 import com.github.eajtciv.commandblockassist.tools.SetBlockTool;
 import com.github.eajtciv.commandblockassist.tools.TpTool;
-import com.github.eajtciv.commandblockassist.util.CommandBlockUtl;
-import com.github.eajtciv.commandblockassist.util.Utility;
+import com.github.eajtciv.commandblockassist.utility.CommandBlockUtl;
+import com.github.eajtciv.commandblockassist.utility.Utility;
 
 
 public class CommandBlockAssist extends JavaPlugin {

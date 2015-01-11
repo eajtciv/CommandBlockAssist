@@ -9,8 +9,8 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 
-import com.github.eajtciv.commandblockassist.util.ConfigManager;
-import com.github.eajtciv.commandblockassist.util.Utility;
+import com.github.eajtciv.commandblockassist.utility.ConfigManager;
+import com.github.eajtciv.commandblockassist.utility.Utility;
 
 public class CommandBlockAssistConfig {
 
@@ -30,6 +30,7 @@ public class CommandBlockAssistConfig {
 	private Material tpTool = Material.GOLD_HOE;
 	private String tpCommand = "tp";
 	private String tpTarget = "@p";
+	private boolean tpPitchYaw = false;
 
 	private Material copyTool = Material.IRON_HOE;
 
@@ -42,6 +43,10 @@ public class CommandBlockAssistConfig {
 	private Material replaceTool = Material.WOOD_HOE;
 
 	private boolean placeMode = false;
+
+	private boolean nameId = false;
+
+	private boolean exactDataTag = false;
 
 	public static CommandBlockAssistConfig getConfig(){
 		CommandBlockAssistConfig config = new CommandBlockAssistConfig();
@@ -59,6 +64,10 @@ public class CommandBlockAssistConfig {
 		}
 
 		placeMode = config.getBoolean("PlaceMode", placeMode);
+
+		nameId = config.getBoolean("NameId", nameId);
+
+		exactDataTag = config.getBoolean("ExactDataTag", exactDataTag);
 
 		//ENABLE
 		ConfigurationSection enable = config.getConfigurationSection("Enable");
@@ -85,6 +94,7 @@ public class CommandBlockAssistConfig {
 			tpTool = Utility.getMaterial(tp.getString("Tool", tpTool.name()));
 			tpCommand = tp.getString("Commmand", tpCommand);
 			tpTarget = tp.getString("Target", tpTarget);
+			tpPitchYaw = tp.getBoolean("PitchYaw", tpPitchYaw);
 		}
 
 		ConfigurationSection copy = config.getConfigurationSection("Copy");
@@ -190,6 +200,18 @@ public class CommandBlockAssistConfig {
 
 	public String getTpTarget() {
 		return tpTarget;
+	}
+
+	public boolean isNameId() {
+		return nameId;
+	}
+
+	public boolean isExactDataTag() {
+		return exactDataTag;
+	}
+
+	public boolean isPitchYaw() {
+		return tpPitchYaw;
 	}
 
 }

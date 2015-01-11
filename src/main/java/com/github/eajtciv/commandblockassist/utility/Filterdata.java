@@ -1,4 +1,4 @@
-package com.github.eajtciv.commandblockassist.util;
+package com.github.eajtciv.commandblockassist.utility;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.github.eajtciv.commandblockassist.util;
+package com.github.eajtciv.commandblockassist.utility;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -66,8 +66,9 @@ public class ConfigManager {
 			Charset charCode = Charset.forName(code);
 			String string = new String(source, charCode);
 			String string2 = new String(string.getBytes(charCode), charCode);
-			if(string.equals(string2))
+			if(string.equals(string2)){
 				return string;
+			}
 		}
 		return null;
 	}

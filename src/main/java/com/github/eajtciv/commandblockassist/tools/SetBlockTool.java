@@ -17,8 +17,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.github.eajtciv.commandblockassist.CommandBlockAssist;
 import com.github.eajtciv.commandblockassist.CommandBlockAssistConfig;
-import com.github.eajtciv.commandblockassist.util.CreatingDataTag;
-import com.github.eajtciv.commandblockassist.util.Utility;
+import com.github.eajtciv.commandblockassist.utility.DataTagUtl;
+import com.github.eajtciv.commandblockassist.utility.Utility;
 /**
  * @author eajtciv
  */
@@ -51,6 +51,28 @@ public class SetBlockTool implements Listener {
 		if(handItem == null || handItem.isSimilar(config.getSetBlockTool()) == false){
 			return;
 		}
+/*
+		try{
+			if(block != null){
+				Object nmsWorld = ReflectUtl.invoke(block.getWorld(), "getHandle");
+				String nmsPackage = nmsWorld.getClass().getPackage().getName();
+				Class<?> blockPositionClass = Class.forName(nmsPackage + ".BlockPosition");
+				Constructor<?> blockPositionConstructor = blockPositionClass.getConstructor(int.class, int.class, int.class);
+				Object blockPosition = blockPositionConstructor.newInstance(block.getX(), block.getY(),block.getZ());
+				Object titleEntity = ReflectUtl.invoke(nmsWorld, "getTileEntity", blockPosition);
+				if (titleEntity != null) {
+					Class<?> nbtTagCompoundClass = Class.forName(nmsPackage + ".NBTTagCompound");
+
+					Object nbtTagCompound = nbtTagCompoundClass.newInstance();
+					ReflectUtl.invoke(titleEntity, "b", nbtTagCompound);
+
+					System.out.println(nbtTagCompound);
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+*/
 
 		if(event.getAction() == Action.RIGHT_CLICK_AIR){
 			if(player.isSneaking()){
@@ -127,11 +149,27 @@ public class SetBlockTool implements Listener {
 		}
 		//ID
 		command.append(" ");
-		command.append(block.getTypeId());
-
+		if(config.isNameId()){
+			String id = DataTagUtl.getBlockNameId(block.getTypeId());
+			if(id != null){
+				command.append(id);
+			}else{
+				command.append(block.getTypeId());
+			}
+		}else{
+			command.append(block.getTypeId());
+		}
 		//メタ&データタグ
 		if(config.getSetBlockDataTag()){
-			String datatag = CreatingDataTag.getBlockDataTag(block);
+			String datatag = null;
+
+			if(config.isExactDataTag()){
+				datatag = DataTagUtl.getExactBlockDataTag(block);
+			}else{
+				datatag = DataTagUtl.getBlockDataTag(block);
+			}
+
+
 			if(datatag != null){
 				command.append(" ");
 				command.append(block.getRawData());
@@ -214,4 +252,5 @@ public class SetBlockTool implements Listener {
 		map.put(CoordinateMode.Relative, "相対座標");
 		return map;
 	}
+
 }
